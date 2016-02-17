@@ -6,7 +6,7 @@ class CreateLocations < ActiveRecord::Migration
       t.datetime :shift_start
       t.datetime :shift_end
 
-      t.timestamps null: false
+      t.timestamps null: true
     end
   end
 end

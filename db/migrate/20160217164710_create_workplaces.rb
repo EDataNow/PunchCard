@@ -4,7 +4,7 @@ class CreateWorkplaces < ActiveRecord::Migration
       t.integer :shift_id
       t.integer :location_id
 
-      t.timestamps null: false
+      t.timestamps null: true
     end
   end
 end
