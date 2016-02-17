@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: pCard-prod
   username: PunchCard
   password: <%= ENV['PUNCHCARD_DATABASE_PASSWORD'] %>

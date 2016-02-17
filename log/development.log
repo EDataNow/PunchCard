@@ -1,0 +1,36 @@
+
+
+Started GET "/" for ::1 at 2016-02-17 13:07:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/edn-1/.rvm/gems/ruby-2.3.0@punchCard/gems/railties-4.2.5.1/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 21ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-02-17 13:22:48 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/edn-1/.rvm/gems/ruby-2.3.0@punchCard/gems/railties-4.2.5.1/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/locations" for ::1 at 2016-02-17 13:22:59 -0500
+Processing by LocationsController#index as HTML
+  [1m[35mLocation Load (1.3ms)[0m  SELECT "locations".* FROM "locations"
+  Rendered locations/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 1292ms (Views: 1282.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/scaffolds.self-58f396ff963011e44f3dba658737f4ffa371786db7f5d8c07752546d39bf2f7e.css?body=1" for ::1 at 2016-02-17 13:23:01 -0500
+
+
+Started GET "/" for ::1 at 2016-02-17 13:23:04 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/edn-1/.rvm/gems/ruby-2.3.0@punchCard/gems/railties-4.2.5.1/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for ::1 at 2016-02-17 13:24:11 -0500
+Processing by Rails::InfoController#properties as */*
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  Rendered /Users/edn-1/.rvm/gems/ruby-2.3.0@punchCard/gems/railties-4.2.5.1/lib/rails/templates/rails/info/properties.html.erb (0.4ms)
+Completed 200 OK in 35ms (Views: 30.2ms | ActiveRecord: 0.9ms)
