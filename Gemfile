@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
-
+gem 'react_on_rails'
 # Use rspec for tests
 gem 'rspec-rails', '~> 3.0'
 
