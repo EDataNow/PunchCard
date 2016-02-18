@@ -67,6 +67,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    foreman (0.78.0)
+      thor (~> 0.19.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -116,6 +118,7 @@ GEM
       activesupport (= 4.2.5.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (2.1.0)
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
@@ -126,6 +129,12 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    react_on_rails (3.0.2)
+      connection_pool
+      execjs (~> 2.5)
+      foreman
+      rails (>= 3.2)
+      rainbow (~> 2.1)
     rspec-core (3.4.2)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -192,6 +201,7 @@ DEPENDENCIES
   pg (~> 0.15)
   rails (= 4.2.5.1)
   react-rails (~> 1.6.0)
+  react_on_rails (~> 3)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
