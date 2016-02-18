@@ -1,0 +1,9 @@
+<%= form_for(:login) do |f|%>
+  <span>
+    <span>Name:</span>
+    <span><%= f.text_field :username %></span>
+  </span>
+  <span class="actions" >
+    <%= f.submit "Log In"%>
+  </span>
+<%end%>

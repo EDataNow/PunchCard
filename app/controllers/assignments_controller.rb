@@ -14,6 +14,8 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
+    puts [session[:username], "BBBBBBBBBBBBBBBBBBBBBBBBBB"]
+    redirect_to login_index_path unless session[:username]
     @assignment = Assignment.new
   end
 
