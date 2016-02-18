@@ -9,6 +9,9 @@ gem 'pg', '~> 0.15'
 # Use rspec for tests
 gem 'rspec-rails', '~> 3.0'
 
+# React for rails
+gem 'react-rails', '~> 1.6.0'
+
 # Use capybara with rspec for testing
 gem 'capybara', '~> 2.5'
 gem 'database_cleaner'
