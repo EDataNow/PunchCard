@@ -14,7 +14,6 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
-    puts [session[:username], "BBBBBBBBBBBBBBBBBBBBBBBBBB"]
     redirect_to login_index_path unless session[:username]
     @assignment = Assignment.new
   end
@@ -27,6 +26,10 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+
+    #target_location = Shift.where(location_id: params[:login_location][:location_id])
+    #target_shift = Shift.find(target_location)
+    #puts target_location
 
     respond_to do |format|
       if @assignment.save
@@ -71,6 +74,7 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:shift_id, :user_id)
+      #params.require(:assignment).permit(:shift_id, :user_id)
+      #:utf8, :authenticity_token, :commit, :login_location
     end
 end
