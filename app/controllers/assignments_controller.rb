@@ -26,6 +26,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+    @assignment.username = session[:username]
 
     #target_location = Shift.where(location_id: params[:login_location][:location_id])
     #target_shift = Shift.find(target_location)
@@ -33,7 +34,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
+        format.html { redirect_to assignments_url, notice: 'User was successfully signed in.' }
         format.json { render :show, status: :created, location: @assignment }
       else
         format.html { render :new }
@@ -61,7 +62,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to assignments_url, notice: 'Assignment was successfully destroyed.' }
+      format.html { redirect_to assignments_url, notice: 'User was successfully signed out.' }
       format.json { head :no_content }
     end
   end
