@@ -1,7 +1,10 @@
 <%= form_for(:login) do |f|%>
   <span>
     <span>Name:</span>
-    <span><%= f.text_field :username %></span>
+    <span>
+      <%# f.text_field :username %>
+      <%= collection_select(:login, :username, User.all.order(:name), :id, :name )%>
+    </span>
   </span>
   <span class="actions" >
     <%= f.submit "Log In"%>

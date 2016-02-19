@@ -10,3 +10,8 @@ Location.create!(name: "Oshawa", address: "123")
 Location.create!(name: "Toronto", address: "456")
 Location.create!(name: "Newmarket", address: "789")
 Location.create!(name: "Space", address: "000")
+
+User.create!(name: "Joshua")
+User.create!(name: "Spencer")
+User.create!(name: "Lee")
+User.create!(name:"Shawn")

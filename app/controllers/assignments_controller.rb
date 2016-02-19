@@ -31,10 +31,6 @@ class AssignmentsController < ApplicationController
     @assignment.username = session[:username]
     @assignment.location = Location.find_by(id: params[:login_location][:location_id]).name
 
-    #target_location = Shift.where(location_id: params[:login_location][:location_id])
-    #target_shift = Shift.find(target_location)
-    #puts target_location
-
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to assignments_url, notice: 'User was successfully signed in.' }
