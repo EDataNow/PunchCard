@@ -5,12 +5,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
-gem 'react_on_rails'
+
 # Use rspec for tests
 gem 'rspec-rails', '~> 3.0'
 
-# React for rails
-gem 'react-rails', '~> 1.6.0'
+
 
 # Use capybara with rspec for testing
 gem 'capybara', '~> 2.5'
@@ -24,6 +23,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem 'react-bootstrap-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
