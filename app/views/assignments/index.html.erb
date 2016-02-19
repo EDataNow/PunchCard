@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <table>
   <thead>
     <tr>
       <th>User</th>
-      <%# <th>Shift</th> %>
+      <th>Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +11,7 @@
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.username %></td>
-        <td><%= assignment.shift_id %></td>
+        <td><%= assignment.location %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td>
           <%= if session[:username] == assignment.username
@@ -27,4 +25,8 @@
 
 <br>
 
-<%= link_to 'Sign In', new_assignment_path %>
+<%# link_to 'Sign In', new_assignment_path unless Assignment.all.to_json.include?(session[:username]) %>
+
+<%= render 'form' unless Assignment.all.to_json.include?(session[:username]) %>
+
+<p id="notice"><%= notice %></p>

@@ -12,7 +12,7 @@
   <% end %>
 
   <span class="field">
-    <%= f.label Location %><br>
+    <%= f.label Location %>
     <%= collection_select(:login_location, :location_id, Location.all.order(:name), :id, :name )%>
   </span>
   <span class="actions" >

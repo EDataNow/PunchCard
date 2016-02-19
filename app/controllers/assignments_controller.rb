@@ -4,6 +4,8 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
+    redirect_to login_index_path unless session[:username]
+    @assignment = Assignment.new
     @assignments = Assignment.all
   end
 
@@ -27,6 +29,7 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(assignment_params)
     @assignment.username = session[:username]
+    @assignment.location = Location.find_by(id: params[:login_location][:location_id]).name
 
     #target_location = Shift.where(location_id: params[:login_location][:location_id])
     #target_shift = Shift.find(target_location)
