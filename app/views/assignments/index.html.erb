@@ -15,10 +15,10 @@
       <tr>
         <td><%= assignment.username %></td>
         <td><%= assignment.location %></td>
-        <td><%= link_to '<button type="button" class="btn btn-primary">Show</button>'.html_safe, assignment %></td>
+        <td><%= link_to '<button type="button" class="btn btn-success">Show</button>'.html_safe, assignment %></td>
         <td>
           <%= if session[:username] == assignment.username
-            link_to '<button type="button" class="btn btn-primary">Sign Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
+            link_to '<button type="button" class="btn btn-success">Sign Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
           end %>
         </td>
       </tr>
