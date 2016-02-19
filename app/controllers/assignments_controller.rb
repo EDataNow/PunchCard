@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
   def index
     redirect_to login_index_path unless session[:username]
     @assignment = Assignment.new
-    @assignments = Assignment.all
+    @assignments = Assignment.all.order(:location, :username)
   end
 
   # GET /assignments/1
