@@ -1,4 +1,7 @@
-<table>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>User</th>
@@ -12,10 +15,10 @@
       <tr>
         <td><%= assignment.username %></td>
         <td><%= assignment.location %></td>
-        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to '<button type="button" class="btn btn-primary">Show</button>'.html_safe, assignment %></td>
         <td>
           <%= if session[:username] == assignment.username
-            link_to 'Sign Out', assignment, method: :delete, data: { confirm: 'Are you sure?' }
+            link_to '<button type="button" class="btn btn-primary">Sign Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
           end %>
         </td>
       </tr>
