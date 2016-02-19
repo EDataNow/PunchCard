@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'assignments#new'
+  root 'assignments#index'
 
-  get 'punch-in' => 'assignments#new'
+  get 'punch-in' => 'assignments#index'
   get 'logout' => 'login#delete'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
