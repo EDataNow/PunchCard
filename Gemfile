@@ -8,7 +8,7 @@ gem 'pg', '~> 0.15'
 gem 'react_on_rails'
 # Use rspec for tests
 gem 'rspec-rails', '~> 3.0'
-
+gem 'annotate'
 # React for rails
 gem 'react-rails', '~> 1.6.0'
 

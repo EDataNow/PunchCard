@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: assignments
+#
+#  id         :integer          not null, primary key
+#  shift_id   :integer
+#  user_id    :integer
+#  end_time   :datetime
+#  reason     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  username   :string
+#  location   :string
+#
+
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
@@ -81,7 +96,7 @@ class AssignmentsController < ApplicationController
 
     def assign_to_shift
       latest_shift = Shift.last
-      Shift.create if !latest_shift || (latest_shift && latest_shift.end_time)
+      Shift.create if latest_shift == nil || latest_shift.end_time == nil
       Shift.last.id
     end
 end
