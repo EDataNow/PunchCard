@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
@@ -29,6 +29,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(assignment_params)
     @assignment.username = "#{current_user.last_name}, #{current_user.first_name}"
     @assignment.user_id = current_user.id
+    @assignment.shift_id = assign_to_shift
     @assignment.location = Location.find_by(id: params[:login_location][:location_id]).name
 
     respond_to do |format|
@@ -76,5 +77,11 @@ class AssignmentsController < ApplicationController
     def assignment_params
       #params.require(:assignment).permit(:shift_id, :user_id)
       #:utf8, :authenticity_token, :commit, :login_location
+    end
+
+    def assign_to_shift
+      latest_shift = Shift.last
+      Shift.create if !latest_shift || (latest_shift && latest_shift.end_time)
+      Shift.last.id
     end
 end
