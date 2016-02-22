@@ -6,10 +6,11 @@
     <span>Name:</span>
     <span>
       <%# f.text_field :username %>
-      <%= collection_select(:login, :username, User.all.order(:name), :id, :name )%>
+      <%= collection_select(:login, :username, User.all.order(:first_name), :id, :first_name )%>
     </span>
   </span>
   <span class="actions" >
     <%= f.submit "Log In"%>
   </span>
+  <div><%= link_to "Register", new_user_path %></div>
 <%end%>
