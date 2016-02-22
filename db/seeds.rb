@@ -11,7 +11,6 @@ Location.create!(name: "Toronto", address: "456")
 Location.create!(name: "Newmarket", address: "789")
 Location.create!(name: "Space", address: "000")
 
-User.create!(name: "Joshua")
-User.create!(name: "Spencer")
-User.create!(name: "Lee")
-User.create!(name:"Shawn")
+(1..50).each do |f|
+  User.create!(first_name: "User", last_name: "No.#{f}", email: "User#{f}@punchcard.net", password: "password#{f}")
+end
