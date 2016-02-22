@@ -17,7 +17,7 @@
         <td><%= assignment.location %></td>
         <td><%= link_to '<button type="button" class="btn btn-success">Show</button>'.html_safe, assignment %></td>
         <td>
-          <%= if session[:username] == assignment.username
+          <%= if assignment.user_id == current_user.id
             link_to '<button type="button" class="btn btn-success">Sign Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
           end %>
         </td>
@@ -30,6 +30,6 @@
 
 <%# link_to 'Sign In', new_assignment_path unless Assignment.all.to_json.include?(session[:username]) %>
 
-<%= render 'form' unless Assignment.all.to_json.include?(session[:username]) %>
+<%= render 'form' unless Assignment.all.to_json.include?(current_user.last_name) %>
 
 <p id="notice"><%= notice %></p>

@@ -1,5 +1,6 @@
 class WorkplacesController < ApplicationController
   before_action :set_workplace, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /workplaces
   # GET /workplaces.json

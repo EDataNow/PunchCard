@@ -24,11 +24,11 @@ RSpec.describe AssignmentsController, type: :controller do
   # Assignment. As you add validations to Assignment, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    skip("Revisit when authentication is complete.")
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    skip("Add invalid attributes")
   }
 
   # This should return the minimal set of values that should be in the session

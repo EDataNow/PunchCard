@@ -4,10 +4,18 @@ Rails.application.routes.draw do
 
   resources :workplaces
   resources :assignments
-  resources :shifts
   resources :locations
-  resources :users
-  resources :login
+
+  resources :shifts do
+    member do
+      get :users
+    end
+  end
+  resources :users do
+    member do
+      get :shifts
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -16,7 +24,11 @@ Rails.application.routes.draw do
   root 'assignments#index'
 
   get 'punch-in' => 'assignments#index'
-  get 'logout' => 'login#delete'
+
+  devise_scope :user do
+    match '/sign-in' => "devise/sessions#new", :as => :login, via: [:get, :post]
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

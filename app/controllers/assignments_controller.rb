@@ -1,10 +1,10 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /assignments
   # GET /assignments.json
   def index
-    redirect_to login_index_path unless session[:username]
     @assignment = Assignment.new
     @assignments = Assignment.all.order(:location, :username)
   end
@@ -16,7 +16,6 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
-    redirect_to login_index_path unless session[:username]
     @assignment = Assignment.new
   end
 
@@ -28,7 +27,8 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
-    @assignment.username = session[:username]
+    @assignment.username = "#{current_user.last_name}, #{current_user.first_name}"
+    @assignment.user_id = current_user.id
     @assignment.location = Location.find_by(id: params[:login_location][:location_id]).name
 
     respond_to do |format|

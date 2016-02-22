@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :shifts, through: :assignments
+
+  has_many :shifts, through: :assignments, foreign_key: :shift_id, dependent: :destroy
   has_many :locations, through: :workplaces
 end

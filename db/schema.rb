@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222143432) do
+ActiveRecord::Schema.define(version: 20160222174149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 20160222143432) do
     t.string   "username"
     t.string   "location"
   end
+
+  add_index "assignments", ["shift_id", "user_id"], name: "index_assignments_on_shift_id_and_user_id", using: :btree
+  add_index "assignments", ["shift_id"], name: "index_assignments_on_shift_id", using: :btree
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -46,7 +50,6 @@ ActiveRecord::Schema.define(version: 20160222143432) do
     t.string   "first_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "last_name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -57,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160222143432) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

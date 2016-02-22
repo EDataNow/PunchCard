@@ -24,7 +24,7 @@ RSpec.describe LocationsController, type: :controller do
   # Location. As you add validations to Location, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: "Oshawa", address: "123 Street St."}
   }
 
   let(:invalid_attributes) {
