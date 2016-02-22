@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20160222143432) do
     t.string   "first_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
+    t.string   "last_name"
+>>>>>>> bdf6c21740c1c4bdd094a7188a9625eca4f37dca
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -56,7 +60,10 @@ ActiveRecord::Schema.define(version: 20160222143432) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+<<<<<<< HEAD
     t.string   "last_name"
+=======
+>>>>>>> bdf6c21740c1c4bdd094a7188a9625eca4f37dca
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
