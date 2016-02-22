@@ -4,6 +4,19 @@
 
 <div class="container">
 	<div style="background-color:rgb(104,212,60) !important" class="jumbotron">
-		<span ><font id="Title" size="22">PunchCard</font></span>
+		<span ><font id="Title" size="22" color="white">PunchCard</font></span>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    	<ul class="nav navbar-nav navbar-left">
+      		<% if user_signed_in? %>
+       		<li>
+       			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+       		</li>
+      			<% else %>
+       		<li>
+       			<%= link_to('Login', new_user_session_path)  %>
+       		</li>
+       		<% end %>
+    	</ul>
+    	</div>
 	</div>
 </div>
