@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  created_at             :datetime
+#  updated_at             :datetime
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  last_name              :string
+#
+
 require "rails_helper"
 
 RSpec.describe UsersController, type: :routing do
@@ -20,7 +41,7 @@ RSpec.describe UsersController, type: :routing do
     end
 
     it "routes to #create" do
-      expect(:post => "/users").to route_to("users#create")
+      expect(:post => "/users").to route_to("registrations#create")
     end
 
     it "routes to #update via PUT" do

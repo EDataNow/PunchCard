@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: workplaces
+#
+#  id          :integer          not null, primary key
+#  shift_id    :integer
+#  location_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class WorkplacesController < ApplicationController
   before_action :set_workplace, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!

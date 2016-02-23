@@ -8,8 +8,4 @@ RSpec.describe "users/index", type: :view do
     ])
   end
 
-  it "renders a list of users" do
-    render
-    assert_select "tr>td", :text => "First".to_s, :count => 2
-  end
 end

@@ -1,10 +1,29 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  created_at             :datetime
+#  updated_at             :datetime
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  last_name              :string
+#
+
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
   describe "GET /users" do
-    it "works! (now write some real specs)" do
-      get users_path
-      expect(response).to have_http_status(200)
-    end
+
+
   end
 end

@@ -18,11 +18,4 @@ RSpec.describe "locations/index", type: :view do
     ])
   end
 
-  it "renders a list of locations" do
-    render
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => "Address".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-  end
 end

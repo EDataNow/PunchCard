@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: shifts
+#
+#  id         :integer          not null, primary key
+#  end_time   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!

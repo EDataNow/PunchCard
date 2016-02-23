@@ -1,10 +1,18 @@
+# == Schema Information
+#
+# Table name: shifts
+#
+#  id         :integer          not null, primary key
+#  end_time   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe "Shifts", type: :request do
   describe "GET /shifts" do
-    it "works! (now write some real specs)" do
-      get shifts_path
-      expect(response).to have_http_status(200)
-    end
+
+
   end
 end
