@@ -51,5 +51,9 @@ RSpec.describe AssignmentsController, type: :controller do
   # AssignmentsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  it 'responds to GET' do
+    get 'index'
+    expect(response.status).to be(:ok)
+  end
 
 end
