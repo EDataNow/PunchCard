@@ -3,13 +3,13 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <div class="container">
-	<div style="background-color:rgb(104,212,60) !important" class="jumbotron">
+	<div style="background-color:rgb(9,80,208) !important" class="jumbotron">
 		<span ><font id="Title" size="22" color="white">PunchCard</font></span>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     	<ul class="nav navbar-nav navbar-right" style="vertical-align: middle">
       		<% if user_signed_in? %>
             <font color="white" size="4">
-            Welcome, <b><%= current_user.first_name %> <%= current_user.last_name %></b>
+            Welcome, <b><%= current_user.first_name.titleize %> <%= current_user.last_name.titleize %></b>
             <%= link_to '<button type="button" class="btn btn-danger">Log Out</button>'.html_safe, destroy_user_session_path, :method => :delete %>
             </font>
        		<% end %>

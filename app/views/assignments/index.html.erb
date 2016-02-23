@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<%= render 'form' unless Assignment.all.to_json.include?(current_user.last_name.titleize) %>
+
+<h3>Employees Currently Signed In</h3>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -15,10 +19,10 @@
       <tr>
         <td><%= assignment.username %></td>
         <td><%= assignment.location %></td>
-        <td><%= link_to '<button type="button" class="btn btn-success">Show</button>'.html_safe, assignment %></td>
+        <td><%= link_to '<button type="button" class="btn btn-default">Details</button>'.html_safe, assignment %></td>
         <td>
           <%= if assignment.user_id == current_user.id
-            link_to '<button type="button" class="btn btn-success">Sign Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
+            link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
           end %>
         </td>
       </tr>
@@ -30,6 +34,6 @@
 
 <%# link_to 'Sign In', new_assignment_path unless Assignment.all.to_json.include?(session[:username]) %>
 
-<%= render 'form' unless Assignment.all.to_json.include?(current_user.last_name) %>
+
 
 <p id="notice"><%= notice %></p>

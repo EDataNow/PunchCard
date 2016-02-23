@@ -1,5 +1,11 @@
+
+
+<%= if flash[:alert] || flash[:notice]
+  render 'layouts/alert'
+end %>
+
 <div class="container" style="width:600px !important">
-<div class="panel panel-success">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h4><%= t('.sign_in', :default => "Sign in") %></h4>
   </div>
@@ -15,10 +21,10 @@
       </div>
       <% if devise_mapping.rememberable? %>
         <div class="checkbox">
-          <label>
+          
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
-          </label>
+          
         </div>
         <% end %>
       <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
