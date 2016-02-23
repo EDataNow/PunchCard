@@ -8,7 +8,5 @@ RSpec.describe "shifts/index", type: :view do
     ])
   end
 
-  it "renders a list of shifts" do
-    render
-  end
+
 end

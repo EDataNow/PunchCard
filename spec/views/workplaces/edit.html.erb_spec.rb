@@ -8,14 +8,4 @@ RSpec.describe "workplaces/edit", type: :view do
     ))
   end
 
-  it "renders the edit workplace form" do
-    render
-
-    assert_select "form[action=?][method=?]", workplace_path(@workplace), "post" do
-
-      assert_select "input#workplace_shift_id[name=?]", "workplace[shift_id]"
-
-      assert_select "input#workplace_location_id[name=?]", "workplace[location_id]"
-    end
-  end
 end

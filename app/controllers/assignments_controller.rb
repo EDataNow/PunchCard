@@ -42,7 +42,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
-    @assignment.username = "#{current_user.last_name}, #{current_user.first_name}"
+    @assignment.username = "#{current_user.last_name.titleize}, #{current_user.first_name.titleize}"
     @assignment.user_id = current_user.id
     @assignment.shift_id = assign_to_shift
     @assignment.location = Location.find_by(id: params[:login_location][:location_id]).name

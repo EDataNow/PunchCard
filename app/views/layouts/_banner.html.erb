@@ -9,7 +9,7 @@
     	<ul class="nav navbar-nav navbar-right" style="vertical-align: middle">
       		<% if user_signed_in? %>
             <font color="white" size="4">
-            Welcome, <b><%= current_user.first_name %> <%= current_user.last_name %></b>
+            Welcome, <b><%= current_user.first_name.titleize %> <%= current_user.last_name.titleize %></b>
             <%= link_to '<button type="button" class="btn btn-danger">Log Out</button>'.html_safe, destroy_user_session_path, :method => :delete %>
             </font>
        		<% end %>
