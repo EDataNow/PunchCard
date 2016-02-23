@@ -5,6 +5,7 @@
 <%= render 'form' unless Assignment.all.to_json.include?(current_user.last_name.titleize) %>
 
 <h3>Employees Currently Signed In</h3>
+
 <table class="table table-hover">
   <thead>
     <tr>
