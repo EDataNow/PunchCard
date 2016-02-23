@@ -1,5 +1,4 @@
 <%= form_for(@assignment) do |f| %>
-<h3>Punch In For Your Shift</h3>
   <% if @assignment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
@@ -12,14 +11,14 @@
     </div>
   <% end %>
 
-  <span class="field">
-    <%= f.label Location %>
-    <%= collection_select(:login_location, :location_id, Location.all.order(:name), :id, :name )%>
-  </span>
+
   <span class="actions" >
     <%= button_tag(type: 'submit', class: "btn btn-primary") do%>
-    Punch In
+    Punch In To
     <% end %>
+  </span>
+  <span class="field">
+    <%= collection_select(:login_location, :location_id, Location.all.order(:name), :id, :name )%>
   </span>
   <hr>
 <% end %>

@@ -2,9 +2,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<%= render 'form' unless Assignment.all.to_json.include?(current_user.last_name.titleize) %>
 
+<<<<<<< HEAD
 <h3>Employees Currently Signed In</h3>
+=======
+
+<span><%=
+  if @assignments.select(user_id: current_user.id).exists?
+
+    puts "#{@assignments.select(user_id: current_user.id)} <------------------------"
+    link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, @assignments.where(user_id: current_user.id).first, method: :delete, data: { confirm: 'Are you sure?' }
+  else
+    render 'form'
+  end
+%></span>
+<span><h3>Employees Currently Signed In</h3></span>
+>>>>>>> 788c326b42dce8341aa6f36750cc04c66458b11b
 
 <table class="table table-hover">
   <thead>
@@ -21,11 +34,6 @@
         <td><%= assignment.username %></td>
         <td><%= assignment.location %></td>
         <td><%= link_to '<button type="button" class="btn btn-default">Details</button>'.html_safe, assignment %></td>
-        <td>
-          <%= if assignment.user_id == current_user.id
-            link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }
-          end %>
-        </td>
       </tr>
     <% end %>
   </tbody>
