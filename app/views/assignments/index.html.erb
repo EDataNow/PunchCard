@@ -3,7 +3,7 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <span><%=
-  if @assignments.select(user_id: current_user.id).exists?
+  if @assignments.where(user_id: current_user.id).exists?
       link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, @assignments.where(user_id: current_user.id).first, method: :delete, data: { confirm: 'Are you sure?' }
   else
     render 'form'

@@ -49,7 +49,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to assignments_url, notice: 'User was successfully signed in.' }
+        format.html { redirect_to assignments_url, notice: 'Punched In Successfully.' }
         format.json { render :show, status: :created, location: @assignment }
       else
         format.html { render :new }
@@ -77,7 +77,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to assignments_url, notice: 'User was successfully signed out.' }
+      format.html { redirect_to assignments_url, notice: 'Punched Out Successfully.' }
       format.json { head :no_content }
     end
   end
