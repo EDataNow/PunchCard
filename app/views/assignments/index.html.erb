@@ -4,9 +4,9 @@
 
 <span><%=
   if @assignments.where(user_id: current_user.id).exists?
-      link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, @assignments.where(user_id: current_user.id).first, method: :delete, data: { confirm: 'Are you sure?' }
+    render 'punch_out'
   else
-    render 'form'
+    render 'punch_in'
   end
 %></span>
 <span><h3>Employees Currently Signed In</h3></span>
