@@ -6,9 +6,7 @@
 
 <span><%=
   if @assignments.select(user_id: current_user.id).exists?
-
-    puts "#{@assignments.select(user_id: current_user.id)} <------------------------"
-    link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, @assignments.where(user_id: current_user.id).first, method: :delete, data: { confirm: 'Are you sure?' }
+      link_to '<button type="button" class="btn btn-danger">Punch Out</button>'.html_safe, @assignments.where(user_id: current_user.id).first, method: :delete, data: { confirm: 'Are you sure?' }
   else
     render 'form'
   end
@@ -34,11 +32,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%# link_to 'Sign In', new_assignment_path unless Assignment.all.to_json.include?(session[:username]) %>
-
-
-
-<p id="notice"><%= notice %></p>

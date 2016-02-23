@@ -1,10 +1,5 @@
-<div id="alertContainer" class="container" style="width:600px !important">
-<div class="alert alert-danger" role="alert">
-<%= flash[:alert] || flash[:notice] %>
-<%= puts "-----------"%>
-<%= puts flash[:alert] %>
-<%= puts "-----------" %>
-<%= puts flash[:notice] %>
-<%= puts "-----------" %>
-</div>
+<div id="alertContainer" class="container">
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:alert] || flash[:notice] %>
+  </div>
 </div>
