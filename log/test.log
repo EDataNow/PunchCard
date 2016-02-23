@@ -12416,6 +12416,28 @@ Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+<<<<<<< HEAD
+  [1m[36m (301.6ms)[0m  [1mDROP DATABASE IF EXISTS "pCard-test"[0m
+  [1m[35m (389.4ms)[0m  CREATE DATABASE "pCard-test" ENCODING = 'unicode'
+  [1m[36mSQL (1.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "assignments" ("id" serial primary key, "shift_id" integer, "user_id" integer, "end_time" timestamp, "reason" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "username" character varying, "location" character varying) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_assignments_on_shift_id_and_user_id" ON "assignments" USING btree ("shift_id", "user_id")[0m
+  [1m[35m (1.3ms)[0m  CREATE  INDEX  "index_assignments_on_shift_id" ON "assignments" USING btree ("shift_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_assignments_on_user_id" ON "assignments" USING btree ("user_id")[0m
+  [1m[35m (2.4ms)[0m  CREATE TABLE "locations" ("id" serial primary key, "name" character varying, "address" character varying, "shift_start" timestamp, "shift_end" timestamp, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "shifts" ("id" serial primary key, "end_time" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "created_at" timestamp, "updated_at" timestamp, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "last_name" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_unlock_token" ON "users" USING btree ("unlock_token")[0m
+  [1m[35m (2.4ms)[0m  CREATE TABLE "workplaces" ("id" serial primary key, "shift_id" integer, "location_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160223153059')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160217163759')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160217163932')
+=======
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[36m (121.2ms)[0m  [1mDROP DATABASE IF EXISTS "pCard-test"[0m
   [1m[35m (249.0ms)[0m  CREATE DATABASE "pCard-test" ENCODING = 'unicode'
@@ -12437,10 +12459,21 @@ Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
   [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160223153059')
   [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160217163759')[0m
   [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160217163932')
+>>>>>>> 788c326b42dce8341aa6f36750cc04c66458b11b
   [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160217164159')[0m
   [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160217164641')
   [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160217164710')[0m
   [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160218213716')
+<<<<<<< HEAD
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160222141623')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160222143432')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160222174149')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+=======
   [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160222141623')[0m
   [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160222143432')
   [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160222174149')[0m
@@ -12619,6 +12652,7 @@ Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.2ms)[0m  BEGIN
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+>>>>>>> 788c326b42dce8341aa6f36750cc04c66458b11b
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.1ms)[0m  BEGIN
@@ -12672,7 +12706,11 @@ Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.1ms)[0m  BEGIN
+<<<<<<< HEAD
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+=======
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+>>>>>>> 788c326b42dce8341aa6f36750cc04c66458b11b
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.1ms)[0m  BEGIN
