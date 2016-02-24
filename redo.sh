@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function reset{
+function reset {
 	echo Starting db reset for rails...
 	echo Purging the database...
 	rake db:purge
@@ -11,7 +11,7 @@ function reset{
 	echo Seed complete! Starting rails server...
 }
 
-function serverStart{
+function serverStart {
 	rails s
 }
 
