@@ -16,6 +16,12 @@ gem 'react-rails', '~> 1.6.0'
 gem 'capybara', '~> 2.5'
 gem 'database_cleaner'
 
+# Haml rather than erb
+gem 'haml'
+gem 'haml-rails'
+gem 'html2haml'
+gem 'erb2haml'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

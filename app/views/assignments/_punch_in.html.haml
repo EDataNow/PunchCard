@@ -1,0 +1,14 @@
+= form_for(@assignment) do |f|
+  - if @assignment.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@assignment.errors.count, "error")
+        prohibited this assignment from being saved:
+      %ul
+        - @assignment.errors.full_messages.each do |message|
+          %li= message
+  %span.actions
+    = button_tag(type: 'submit', class: "btn btn-primary") do
+      Punch In To
+  %span.field
+    = collection_select(:login_location, :location_id, Location.all.order(:name), :id, :name )

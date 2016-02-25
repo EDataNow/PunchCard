@@ -1,0 +1,15 @@
+%p
+  %strong Name:
+  = @location.name
+%p
+  %strong Address:
+  = @location.address
+%p
+  %strong Shift start:
+  = @location.shift_start
+%p
+  %strong Shift end:
+  = @location.shift_end
+= link_to 'Edit', edit_location_path(@location)
+|
+= link_to 'Back', locations_path

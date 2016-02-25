@@ -1,0 +1,19 @@
+= form_for(@workplace) do |f|
+  - if @workplace.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@workplace.errors.count, "error")
+        prohibited this workplace from being saved:
+      %ul
+        - @workplace.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :shift_id
+    %br/
+    = f.number_field :shift_id
+  .field
+    = f.label :location_id
+    %br/
+    = f.number_field :location_id
+  .actions
+    = f.submit

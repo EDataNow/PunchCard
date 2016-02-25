@@ -1,0 +1,9 @@
+%p
+  %strong Shift:
+  = @workplace.shift_id
+%p
+  %strong Location:
+  = @workplace.location_id
+= link_to 'Edit', edit_workplace_path(@workplace)
+|
+= link_to 'Back', workplaces_path

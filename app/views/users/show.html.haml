@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong First:
+  = @user.first_name
+  %br/
+  %strong Last:
+  = @user.last_name
+  %br/
+  %strong Email:
+  = @user.email
+= link_to 'Edit', edit_user_path(@user)
+|
+= link_to 'Back', users_path
