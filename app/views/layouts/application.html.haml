@@ -8,8 +8,7 @@
     = csrf_meta_tags
   %body
     = render 'layouts/banner'
-    = if flash[:alert] || flash[:notice] |
-        render 'layouts/alert'           |
-      end                                |
+    - if flash[:alert] || flash[:notice]
+      %body=  render 'layouts/alert'
     .container
       = yield
