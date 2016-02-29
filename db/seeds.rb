@@ -13,8 +13,10 @@ Location.create!(name: "Space", address: "000")
 
 Shift.create!()
 
-(1..50).each do |f|
-  User.create!(first_name: "User", last_name: "No.#{f}", email: "User#{f}@punchcard.net", password: "password#{f}")
+User.create!(first_name: "User", last_name: "No.1", email: "User1@punchcard.net", password: "password1", admin: true)
+
+(2..50).each do |f|
+  User.create!(first_name: "User", last_name: "No.#{f}", email: "User#{f}@punchcard.net", password: "password#{f}", admin: false)
   Assignment.create!(user_id: f, shift_id: 1, username: "No.#{f}, User", location: "Oshawa") if f.even?
 end
 
