@@ -19,6 +19,8 @@
       %br
       %ul.nav.navbar-nav.navbar-right{:style => "vertical-align: middle"}
         - if current_user.try(:admin?)
-          = link_to '<button type="button" class="btn btn-secondary">Add A User</button>'.html_safe, destroy_user_session_path, :method => :delete
-          = link_to '<button type="button" class="btn btn-secondary">Add A Location</button>'.html_safe, destroy_user_session_path, :method => :delete
+          = link_to '<button type="button" class="btn btn-secondary">Add A User</button>'.html_safe, users_path
+          = link_to '<button type="button" class="btn btn-secondary">Add A Location</button>'.html_safe, locations_path
+
+
 
