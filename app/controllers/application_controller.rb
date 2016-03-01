@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
       super
     else
       redirect_to login_path, :notice => 'Please Log In'
-      ## if you want render 404 page
-      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
 
