@@ -17,6 +17,6 @@ User.create!(first_name: "User", last_name: "No.1", email: "User1@punchcard.net"
 
 (2..50).each do |f|
   User.create!(first_name: "User", last_name: "No.#{f}", email: "User#{f}@punchcard.net", password: "password#{f}", admin: false)
-  Assignment.create!(user_id: f, shift_id: 1, username: "No.#{f}, User", location: "Oshawa") if f.even?
+  Assignment.create!(user_id: f, shift_id: 1, username: "No.#{f}, User", location_id: ((f%3)+1)) if f.even?
 end
 
