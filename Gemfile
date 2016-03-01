@@ -22,6 +22,8 @@ gem 'haml-rails'
 gem 'html2haml'
 gem 'erb2haml'
 
+gem 'filterrific'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

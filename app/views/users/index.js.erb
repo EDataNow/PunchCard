@@ -1,0 +1,7 @@
+<% js = escape_javascript(
+  render(
+    :partial => 'users/list',
+    :locals => { :users => @users }
+  )
+) %>
+$("#results").html("<%= js %>");
