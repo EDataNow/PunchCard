@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223153059) do
+ActiveRecord::Schema.define(version: 20160301160238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20160223153059) do
     t.integer  "user_id"
     t.datetime "end_time"
     t.string   "reason"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "username"
     t.string   "location"
+    t.integer  "location_id"
   end
 
   add_index "assignments", ["shift_id", "user_id"], name: "index_assignments_on_shift_id_and_user_id", using: :btree

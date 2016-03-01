@@ -19,5 +19,5 @@
     - @assignments.each do |assignment|
       %tr
         %td= assignment.username
-        %td= assignment.location
+        %td= Location.find_by(id: assignment.location_id).name
         %td= link_to '<button type="button" class="btn btn-default">Details</button>'.html_safe, assignment

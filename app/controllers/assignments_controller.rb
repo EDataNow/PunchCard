@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments.json
   def index
     @assignment = Assignment.new
-    @assignments = Assignment.all.order(:location, :username)
+    @assignments = Assignment.all.order(:location_id, :username)
   end
 
   # GET /assignments/1
@@ -42,10 +42,6 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
-    @assignment.username = "#{current_user.last_name.titleize}, #{current_user.first_name.titleize}"
-    @assignment.user_id = current_user.id
-    @assignment.shift_id = assign_to_shift
-    @assignment.location = Location.find_by(id: params[:login_location][:location_id]).name
 
     respond_to do |format|
       if @assignment.save
@@ -90,13 +86,14 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      #params.require(:assignment).permit(:shift_id, :user_id)
+      params.require(:assignment).permit(:shift_id, :user_id, :username, :location_id)
       #:utf8, :authenticity_token, :commit, :login_location
     end
 
     def assign_to_shift
       latest_shift = Shift.last
-      Shift.create if latest_shift == nil || latest_shift.end_time == nil
+      Shift.create if latest_shift == nil || latest_shift.end_time != nil
       Shift.last.id
     end
+    helper_method :assign_to_shift
 end
