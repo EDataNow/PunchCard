@@ -27,7 +27,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @filterrific = initialize_filterrific(
+    User,
+    params[:filterrific]
+    ) or return
+    @users = User.filterrific_find(@filterrific)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /users/1

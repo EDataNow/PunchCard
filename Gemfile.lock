@@ -81,6 +81,8 @@ GEM
       html2haml
     erubis (2.7.0)
     execjs (2.6.0)
+    filterrific (2.0.5)
+      rails (>= 3.1.0)
     foreman (0.78.0)
       thor (~> 0.19.1)
     globalid (0.3.6)
@@ -235,6 +237,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   erb2haml
+  filterrific
   haml
   haml-rails
   html2haml
