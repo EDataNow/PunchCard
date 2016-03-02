@@ -13,7 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
-
+//= require jquery-ui
+//= require dataTables/jquery.dataTables
 //= require_tree .
-//= require filterrific/filterrific-jquery
+
+$(function() {
+  $("#users th a, #users .pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#users_search input").keyup(function() {
+    $.get($("#users_search").attr("action"), $("#users_search").serialize(), null, "script");
+    return false;
+  });
+});

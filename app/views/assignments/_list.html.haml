@@ -1,0 +1,12 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th User
+      %th Location
+      %th{:colspan => "3"}
+  %tbody
+    - @assignments.each do |assignment|
+      %tr
+        %td= assignment.username
+        %td= Location.find_by(id: assignment.location_id).name
+        %td= link_to '<button type="button" class="btn btn-default">Details</button>'.html_safe, assignment

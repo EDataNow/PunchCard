@@ -1,5 +1,5 @@
 -if current_user.try(:admin?)
-  %h1 Listing Locations
+  %h1 Locations
   %table.table.table-hover
     %thead
       %tr
@@ -20,7 +20,6 @@
           %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
   %br/
   = link_to 'New Location', new_location_path
-
 -else
   .jumbotron{:style => "background-color:rgb(227,81,74); padding:25px !important; width: 100%; height: 100%;"}
     %font{:size => "22", :style => "vertical-align: middle;color: rgb(126,41,36)"}
