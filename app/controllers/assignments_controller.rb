@@ -2,15 +2,14 @@
 #
 # Table name: assignments
 #
-#  id         :integer          not null, primary key
-#  shift_id   :integer
-#  user_id    :integer
-#  end_time   :datetime
-#  reason     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  username   :string
-#  location   :string
+#  id           :integer          not null, primary key
+#  shift_id     :integer
+#  user_id      :integer
+#  end_time     :datetime
+#  reason       :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  location_id  :integer
 #
 
 class AssignmentsController < ApplicationController
@@ -86,8 +85,7 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:shift_id, :user_id, :username, :location_id)
-      #:utf8, :authenticity_token, :commit, :login_location
+      params.require(:assignment).permit(:shift_id, :user_id, :location_id, :utf8, :authenticity_token)
     end
 
     def assign_to_shift

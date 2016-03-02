@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20160301160238) do
     t.string   "reason"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "username"
-    t.string   "location"
     t.integer  "location_id"
   end
 

@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   has_many :shifts, through: :assignments, foreign_key: :shift_id#, dependent: :destroy
-  has_many :locations, through: :workplaces
+  has_many :locations, through: :workplaces, foreign_key: :location_id#, dependent: :destroy
+
 
   def self.search(search)
   	if search
