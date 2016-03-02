@@ -58,8 +58,4 @@ class User < ActiveRecord::Base
       *terms.map { |e| [e] * num_or_conditions }.flatten
     )
   }
-
-
-
->>>>>>> b626e497262ef3180d746b3c298fd6f706312124
 end
