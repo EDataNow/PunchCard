@@ -11,7 +11,6 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
-end
 
 	def sortable(column, title = nil)
   		title ||= column.titleize

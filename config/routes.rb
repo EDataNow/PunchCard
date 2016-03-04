@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
   get 'login/new'
 
   #resources :workplaces
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   root 'assignments#index'
 
   get 'punch-in' => 'assignments#index'
+
+
 
   devise_scope :user do
     match '/sign-in' => "devise/sessions#new", :as => :login, via: [:get, :post]
