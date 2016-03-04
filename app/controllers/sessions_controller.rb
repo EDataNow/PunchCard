@@ -21,8 +21,9 @@ class SessionsController < Devise::SessionsController
       format.json {
         signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
         render :json => {
+          notice: "Signed Out"
           'csrfParam' => request_forgery_protection_token,
-          # 'csrfToken' => form_authenticity_token
+          'token' => form_authenticity_token
         }
       }
     end
