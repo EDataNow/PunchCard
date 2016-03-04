@@ -7,10 +7,10 @@ class SessionsController < Devise::SessionsController
       format.html { super }
       format.json {
         warden.authenticate!(scope: resource_name, recall: "#{controller_path}#new")
-        render status: 200, json: {
+        render json: {
           error: "Success",
           'csrfParam': request_forgery_protection_token,
-          'token': form_authenticity_token }
+          'token': form_authenticity_token }, status: 200
       }
     end
   end
