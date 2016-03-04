@@ -19,6 +19,7 @@
       %br
       %ul.nav.navbar-nav.navbar-right{:style => "vertical-align: middle"}
         - if current_user.try(:admin?)
+          = link_to '<button type="button" class="btn btn-secondary">View PunchSheet</button>'.html_safe, assignments_path
           = link_to '<button type="button" class="btn btn-secondary">Add A User</button>'.html_safe, users_path
           = link_to '<button type="button" class="btn btn-secondary">Add A Location</button>'.html_safe, locations_path
 

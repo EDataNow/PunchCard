@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require devise_bootstrap_views
+ *= require dataTables/jquery.dataTables
+ *= require jquery-ui
  */
