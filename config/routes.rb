@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
 
   devise_scope :user do
-    match '/sign_in' => "devise/sessions#new", :as => :login, via: [:get, :post]
+    match '/sign-in' => "devise/sessions#new", :as => :login, via: [:get, :post]
   end
 
   # Example of regular route:
