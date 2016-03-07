@@ -12,7 +12,7 @@ class SessionsController < Devise::SessionsController
             'csrfParam': request_forgery_protection_token,
             token: form_authenticity_token,
             user: current_user.as_json,
-            active: Assignment.find_by(id: current_user.id).present?,
+            active: Assignment.find_by(user_id: current_user.id).present?,
             current_shift: Shift.find_by(id: assign_to_shift).as_json,
           },
           status: 200
