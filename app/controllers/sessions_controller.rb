@@ -10,7 +10,7 @@ class SessionsController < Devise::SessionsController
         render json: {
             notice: "Success",
             user: current_user.as_json,
-            active: Assignment.find_by(user_id: current_user.id).present?,
+            active_assignment: Assignment.find_by(user_id: current_user.id).as_json,
             current_shift: Shift.find_by(id: assign_to_shift).as_json,
           },
           status: 200
