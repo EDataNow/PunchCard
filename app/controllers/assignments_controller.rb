@@ -77,6 +77,13 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def assign_to_shift
+      latest_shift = Shift.last
+      Shift.create if latest_shift == nil || latest_shift.end_time != nil
+      Shift.last.id
+  end
+  helper_method :assign_to_shift
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
@@ -88,10 +95,4 @@ class AssignmentsController < ApplicationController
       params.require(:assignment).permit(:shift_id, :user_id, :location_id, :utf8, :authenticity_token)
     end
 
-    def assign_to_shift
-      latest_shift = Shift.last
-      Shift.create if latest_shift == nil || latest_shift.end_time != nil
-      Shift.last.id
-    end
-    helper_method :assign_to_shift
 end
