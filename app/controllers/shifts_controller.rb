@@ -15,7 +15,15 @@ class ShiftsController < ApplicationController
   # GET /shifts
   # GET /shifts.json
   def index
-    @shifts = Shift.all
+    respond_to do |format|
+      format.html {@shifts = Shift.all}
+      format.json {render json: {
+        notice: "Success",
+        shift: Shift.all.last.as_json,
+      }, status: :ok
+    }
+    end
+
   end
 
   # GET /shifts/1
