@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
+  acts_as_token_authentication_handler_for User
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery except: [:sign_in]
-  prepend_before_filter :get_auth_token
-
 
   def debug_frame
     puts "-------------------------"
@@ -18,13 +17,6 @@ class ApplicationController < ActionController::Base
       super
     else
       redirect_to login_path, :notice => 'Please Log In'
-    end
-  end
-
-  private
-  def get_auth_token
-    if auth_token = params[:auth_token].blank? && request.headers["X-AUTH-TOKEN"]
-      params[:auth_token] = auth_token
     end
   end
 
