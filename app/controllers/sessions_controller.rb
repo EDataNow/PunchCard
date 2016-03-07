@@ -1,16 +1,18 @@
 class SessionsController < Devise::SessionsController
   respond_to :json
 
-
   def create
     respond_to do |format|
       format.html { super }
       format.json {
         warden.authenticate!(scope: resource_name, recall: "#{controller_path}#new")
         render json: {
-          notice: "Success",
-          'csrfParam': request_forgery_protection_token,
-          'token': form_authenticity_token }, status: 200
+            notice: "Success",
+            'csrfParam': request_forgery_protection_token,
+            token: form_authenticity_token,
+            user: current_user.as_json,
+          },
+          status: 200
       }
     end
   end
