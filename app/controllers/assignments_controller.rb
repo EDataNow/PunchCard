@@ -15,6 +15,7 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   # GET /assignments
   # GET /assignments.json
@@ -45,7 +46,7 @@ class AssignmentsController < ApplicationController
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to assignments_url, notice: 'Punched In Successfully.' }
-        format.json { render :show, status: :created, location: @assignment }
+        format.json { render json: @assignment.as_json, status: 201}
       else
         format.html { render :new }
         format.json { render json: @assignment.errors, status: :unprocessable_entity }
@@ -77,13 +78,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  def assign_to_shift
-      latest_shift = Shift.last
-      Shift.create if latest_shift == nil || latest_shift.end_time != nil
-      Shift.last.id
-  end
-  helper_method :assign_to_shift
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
@@ -95,4 +89,10 @@ class AssignmentsController < ApplicationController
       params.require(:assignment).permit(:shift_id, :user_id, :location_id, :utf8, :authenticity_token)
     end
 
+    def assign_to_shift
+      latest_shift = Shift.last
+      Shift.create if latest_shift == nil || latest_shift.end_time != nil
+      Shift.last.id
+    end
+    helper_method :assign_to_shift
 end
