@@ -11,6 +11,7 @@ class SessionsController < Devise::SessionsController
             'csrfParam': request_forgery_protection_token,
             token: form_authenticity_token,
             user: current_user.as_json,
+            active: Assignment.find_by(id: current_user.id).exists?
           },
           status: 200
       }
