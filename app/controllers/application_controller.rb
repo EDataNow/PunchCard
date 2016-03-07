@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery except: [:sign_in]
 
+  
+
   def debug_frame
     puts "-------------------------"
     puts ( yield || "Returned NIL" )
