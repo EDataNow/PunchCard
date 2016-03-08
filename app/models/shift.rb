@@ -9,6 +9,7 @@
 #
 
 class Shift < ActiveRecord::Base
-  belongs_to :locations, dependent: :destroy
+  belongs_to :location, dependent: :destroy
+  has_many :assignments
   has_many :users, through: :assignments, foreign_key: :user_id#, dependent: :destroy
 end

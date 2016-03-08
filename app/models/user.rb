@@ -17,6 +17,11 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  last_name              :string
+#  failed_attempts        :integer          default(0), not null
+#  unlock_token           :string
+#  locked_at              :datetime
+#  admin                  :boolean
+#  authentication_token   :string
 #
 
 class User < ActiveRecord::Base
@@ -26,9 +31,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
+  has_many :assignments
   has_many :shifts, through: :assignments, foreign_key: :shift_id#, dependent: :destroy
-  has_many :locations, through: :workplaces, foreign_key: :location_id#, dependent: :destroy
 
+  has_many :workplaces
+  has_many :locations, through: :workplaces, foreign_key: :location_id#, dependent: :destroy
 
   def self.search(search)
   	if search

@@ -17,6 +17,11 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  last_name              :string
+#  failed_attempts        :integer          default(0), not null
+#  unlock_token           :string
+#  locked_at              :datetime
+#  admin                  :boolean
+#  authentication_token   :string
 #
 
 require "rails_helper"

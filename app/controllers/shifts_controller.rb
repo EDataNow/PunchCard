@@ -11,6 +11,7 @@
 class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  respond_to :json
 
   # GET /shifts
   # GET /shifts.json
@@ -29,6 +30,7 @@ class ShiftsController < ApplicationController
   # GET /shifts/1
   # GET /shifts/1.json
   def show
+
   end
 
   # GET /shifts/new
