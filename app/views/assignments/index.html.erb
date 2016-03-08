@@ -1,0 +1,59 @@
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">/</link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<% if Assignment.find_by(user_id: current_user.id) %>
+  <span>
+    <%= render 'punch_out' %>
+  </span>
+<% else %>
+  <span>
+    <%= render 'punch_in' %>
+  </span>
+<% end %>
+<h3>Employees Currently Signed In</h3>
+<ul class="nav nav-pills">
+
+  <li class="active"><a data-toggle="pill" href="#all">ALL</a></li>
+
+  <% Location.all.each do |location| %>
+    <li><a data-toggle="pill" href="#<%= location.name.gsub(/\s+/, "") %>"><%= location.name%></a></li>
+  <% end %>
+
+</ul>
+
+<div class="tab-content">
+
+  <div id="home" class="tab-pane fade in active">
+  Hello!
+  </div>
+
+  <% Location.all.each do |location| %>
+    <div id="<%= location.name.gsub(/\s+/, "")%>" class="tab-pane fade"><%= location.name%></div>
+  <% end %>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Location</th>
+      <th>Punch-In Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+  <% @assignments.each do |assignment| %>
+  <% punched_user = User.find_by(id: assignment.user_id) %>
+    <tr>
+      <td>
+        <%= "#{punched_user.last_name.titleize}, #{punched_user.first_name.titleize}" %>
+      </td>
+      <td>
+        <%= Location.find_by(id: assignment.location_id).name %>
+      </td>
+      <td>
+        <%= assignment.created_at.in_time_zone('Eastern Time (US & Canada)').to_formatted_s(:long_ordinal) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
