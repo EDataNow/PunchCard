@@ -42,6 +42,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+    @assignment.shift_id = assign_to_shift(assignment_params[:location_id])
 
     respond_to do |format|
       if @assignment.save
@@ -92,7 +93,7 @@ class AssignmentsController < ApplicationController
     def assign_to_shift(location_id)
       latest_shift = Shift.where(location_id: location_id).last
       Shift.create(location_id: location_id) if latest_shift == nil || latest_shift.end_time != nil
-      Shift.last.id
+      Shift.where(location_id: location_id).last.id
     end
     helper_method :assign_to_shift
 end

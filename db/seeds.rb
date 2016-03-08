@@ -11,7 +11,7 @@ Location.create!(name: "Toronto", address: "456")
 Location.create!(name: "Newmarket", address: "789")
 Location.create!(name: "Space", address: "000")
 
-Shift.create!()
+Shift.create!(location_id: 1)
 
 User.create!(first_name: "User", last_name: "No.1", email: "User1@punchcard.net", password: "password1", admin: true)
 
