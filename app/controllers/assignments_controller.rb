@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments.json
   def index
     @assignment = Assignment.new
-    @assignments = Assignment.all.order(:location_id)
+    @assignments = Assignment.all.order(:created_at)
   end
 
   # GET /assignments/1

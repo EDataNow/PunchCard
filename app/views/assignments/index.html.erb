@@ -36,20 +36,17 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>Location</th>
       <th>Punch-In Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody></tbody>
+  <% @assignments = Assignment.where(end_time: nil)%>
   <% @assignments.each do |assignment| %>
-  <% punched_user = User.find_by(id: assignment.user_id) %>
+    <% punched_user = User.find_by(id: assignment.user_id) %>
     <tr>
       <td>
         <%= "#{punched_user.last_name.titleize}, #{punched_user.first_name.titleize}" %>
-      </td>
-      <td>
-        <%= Location.find_by(id: assignment.location_id).name %>
       </td>
       <td>
         <%= assignment.created_at.in_time_zone('Eastern Time (US & Canada)').to_formatted_s(:long_ordinal) %>

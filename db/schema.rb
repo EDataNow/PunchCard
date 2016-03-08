@@ -21,9 +21,8 @@ ActiveRecord::Schema.define(version: 20160308131601) do
     t.integer  "user_id"
     t.datetime "end_time"
     t.string   "reason"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "assignments", ["shift_id", "user_id"], name: "index_assignments_on_shift_id_and_user_id", using: :btree

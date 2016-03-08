@@ -18,7 +18,7 @@ class ShiftsController < ApplicationController
   def index
   end
 
-  # GET /shifts/1             {"id"=>1, "user"=>{}, "created_at"=>Tue, 08 Mar 2016 14:46:27 UTC +00:00, "location_id"=>3}
+  # GET /shifts/1
   # GET /shifts/1.json
   def show
     respond_to do |format|
