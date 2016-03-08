@@ -14,11 +14,20 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
+
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+   end
+
+   def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+   end
 
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    @locations = Location.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /locations/1
