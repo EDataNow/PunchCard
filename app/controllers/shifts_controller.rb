@@ -87,7 +87,7 @@ class ShiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shift_params
-      params.fetch(:shift, {})
+      params.require(:shift).permit(:location_id, :utf8, :authenticity_token)
     end
 
     def expand_assignments

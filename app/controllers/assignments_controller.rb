@@ -89,9 +89,9 @@ class AssignmentsController < ApplicationController
       params.require(:assignment).permit(:shift_id, :user_id, :location_id, :utf8, :authenticity_token)
     end
 
-    def assign_to_shift
-      latest_shift = Shift.last
-      Shift.create if latest_shift == nil || latest_shift.end_time != nil
+    def assign_to_shift(location_id)
+      latest_shift = Shift.where(location_id: location_id).last
+      Shift.create(location_id: location_id) if latest_shift == nil || latest_shift.end_time != nil
       Shift.last.id
     end
     helper_method :assign_to_shift
