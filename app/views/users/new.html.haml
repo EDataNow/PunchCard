@@ -2,17 +2,25 @@
 = form_for(resource, :as => resource_name,:url => registration_path(resource_name),:html => {:id => "sign_up_user"},:format => :json,:remote => true ) do |f|
   = devise_error_messages!
   .field
-  %div
+    = f.label :first_name
+    %br/
     = f.text_field :first_name, placeholder: "First Name"
-  %div
+  .field
+    =f.label :last_name
+    %br/
     = f.text_field :last_name, placeholder: "Last Name" 
-  %div
+  .field
+    =f.label :email
+    %br/
     = f.email_field :email, placeholder: "Email"
-  %div
-    = f.password_field :password, placeholder: "Password"
-  %div
-    = f.password_field :password_confirmation, placeholder: "Password Confirmation"
-  %div
+  .field
+    =f.label :password
+    %br/
+    = f.password_field :password
+  .field
+    =f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation
   .actions
     = f.submit "Sign up", class: 'btn btn-primary btn-medium'
 = link_to 'Back', users_path
