@@ -18,14 +18,13 @@ class ShiftsController < ApplicationController
   def index
   end
 
-  # GET /shifts/1
+  # GET /shifts/1             {"id"=>1, "user"=>{}, "created_at"=>Tue, 08 Mar 2016 14:46:27 UTC +00:00, "location_id"=>3}
   # GET /shifts/1.json
   def show
-    @shift = Shift.find(params[:id])
     respond_to do |format|
       format.html {}
       format.json {render json: {
-        assignments: @shift.assignments.as_json,
+        assignments: expand_assignments
       }, status: :ok
     }
     end
@@ -90,4 +89,15 @@ class ShiftsController < ApplicationController
     def shift_params
       params.fetch(:shift, {})
     end
+
+    def expand_assignments
+      @expanded_assignments = {}
+      Shift.find(params[:id]).assignments.each do |a|
+        @user = User.find(a.user_id)
+        @location = Location.find(a.location_id)
+        @expanded_assignments[a.id] = {user: {first_name: @user.first_name, last_name: @user.last_name, email: @user.email}, start_time: a.created_at, location: {name: @location.name}}
+      end
+      @expanded_assignments.as_json
+    end
+    helper_method :expand_assignments
 end
