@@ -24,8 +24,11 @@ class RegistrationsController < Devise::RegistrationsController
   # Signs in a user on sign up. You can overwrite this method in your own
   # RegistrationsController.
   def sign_up(resource_name, resource)
-    puts "Hey!"
-    redirect_to user_path
+    
+  end
+
+  def after_sign_up_path(resource_name, resource)
+    redirect_to users_path
   end
   
 
@@ -36,7 +39,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def sign_up_params
-	  devise_parameter_sanitizer.sanitize(:sign_up)
-	end
+	   devise_parameter_sanitizer.sanitize(:sign_up)
+	  end
 
 end
