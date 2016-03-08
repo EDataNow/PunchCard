@@ -15,6 +15,7 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   # GET /assignments
   # GET /assignments.json
@@ -45,7 +46,7 @@ class AssignmentsController < ApplicationController
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to assignments_url, notice: 'Punched In Successfully.' }
-        format.json { render :show, status: :created, location: @assignment }
+        format.json { render json: @assignment.as_json, status: 201}
       else
         format.html { render :new }
         format.json { render json: @assignment.errors, status: :unprocessable_entity }

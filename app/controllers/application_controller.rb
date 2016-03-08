@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
+  acts_as_token_authentication_handler_for User, only: [:create, :update, :destroy]
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery except: [:sign_in]
-
-  
 
   def debug_frame
     puts "-------------------------"

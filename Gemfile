@@ -22,6 +22,9 @@ gem 'haml-rails'
 gem 'html2haml'
 gem 'erb2haml'
 
+# Token Auth - see semver.org
+gem 'simple_token_authentication', '~> 1.0'
+
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'
 gem 'kaminari'

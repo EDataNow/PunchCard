@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:sign_in]
   helper_method :sort_column, :sort_direction
 
-   def sort_column
+  def sort_column
     User.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
    end
 
