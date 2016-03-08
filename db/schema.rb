@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307211213) do
+ActiveRecord::Schema.define(version: 20160308131601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20160307211213) do
     t.string   "reason"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "username"
-    t.string   "location"
     t.integer  "location_id"
   end
 
@@ -43,9 +41,12 @@ ActiveRecord::Schema.define(version: 20160307211213) do
 
   create_table "shifts", force: :cascade do |t|
     t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
   end
+
+  add_index "shifts", ["location_id"], name: "index_shifts_on_location_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -75,10 +76,14 @@ ActiveRecord::Schema.define(version: 20160307211213) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   create_table "workplaces", force: :cascade do |t|
-    t.integer  "shift_id"
+    t.integer  "user_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "workplaces", ["location_id", "user_id"], name: "index_workplaces_on_location_id_and_user_id", using: :btree
+  add_index "workplaces", ["location_id"], name: "index_workplaces_on_location_id", using: :btree
+  add_index "workplaces", ["user_id"], name: "index_workplaces_on_user_id", using: :btree
 
 end
