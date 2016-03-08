@@ -1,6 +1,3 @@
-<p id="notice">
-  <%= notice %>
-</p>
 <% if current_user.try(:admin?) %>
   <h1>Employees</h1>
   <%= form_tag users_path, :method => 'get', :id => "users_search" do %>
@@ -20,19 +17,19 @@
         <th colspan="3"></th>
       </tr>
     </thead>
+    <%= will_paginate @locations,renderer: BootstrapPagination::Rails, class: 'pagination-centered' %>
     <tbody>
     <% @users.each do |user| %>
     <tr>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
       <td><%= user.email %></td>
-      <td><%= link_to 'Show', user %></td>
-      <td><%= link_to 'Manage', edit_user_path(user) %></td>
-      <td><%= link_to 'Remove', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to '<button type="button" class="btn btn-danger">Delete Employee</button>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 <% end %>
     </tbody>
   </table>
+  <%= will_paginate @users,renderer: BootstrapPagination::Rails, class: 'pagination-centered' %>
 <% else %>
   <div class="jumbotron" style="background-color:rgb(227,81,74); padding:25px !important; width: 100%; height: 100%;">
     <font size="22" style="vertical-align: middle;color: rgb(126,41,36)">
