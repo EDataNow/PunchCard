@@ -74,7 +74,7 @@ class ShiftsController < ApplicationController
   # DELETE /shifts/1
   # DELETE /shifts/1.json
   def destroy
-    @shift.destroy
+    @shift.end_time = @shift.end_time || DateTime.now
     respond_to do |format|
       format.html { redirect_to shifts_url, notice: 'Shift was successfully destroyed.' }
       format.json { head :no_content }
@@ -101,4 +101,9 @@ class ShiftsController < ApplicationController
       @expanded_assignments.as_json
     end
     helper_method :expand_assignments
+
+    def check_last_out
+      @shift.end_time = @shift.end_time || DateTime.now unless @shift.assignments.active
+    end
+
 end

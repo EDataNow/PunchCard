@@ -22,5 +22,8 @@ User.create!(first_name: "User", last_name: "No.1", email: "User1@punchcard.net"
 (2..50).each do |f|
   User.create!(first_name: "User", last_name: "No.#{f}", email: "User#{f}@punchcard.net", password: "password#{f}", admin: false)
   Assignment.create!(user_id: f, shift_id: ((f%3)+1)) if f.even?
+  (1..3).each do |w|
+    Workplace.create!(location_id: w, user_id: f)
+  end
 end
 

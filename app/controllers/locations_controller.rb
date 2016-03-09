@@ -94,4 +94,5 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:name, :address, :shift_start, :shift_end)
     end
+
 end
