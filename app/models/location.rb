@@ -13,7 +13,10 @@
 
 class Location < ActiveRecord::Base
   has_many :shifts
+
+  has_many :workplaces
   has_many :users, through: :workplaces, foreign_key: :user_id#, dependent: :destroy
+
   validates :name, presence: true
 
   def self.search(search)
