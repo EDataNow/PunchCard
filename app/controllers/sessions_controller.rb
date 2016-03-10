@@ -10,7 +10,7 @@ class SessionsController < Devise::SessionsController
         @active_assignment = true if (Assignment.find_by(user_id: current_user.id) != nil)
         @locations = {}
         current_user.locations.each do |loc|
-          @locations[loc.id] = {active_shift: loc.shifts.active.as_json(include: {assignments: {include: {user: {only: [:first_name, :last_name, :email]} }}}), name: loc.name}
+          @locations[loc.id] = {id: loc.id, name: loc.name, active_shift: loc.shifts.active.as_json(include: {assignments: {include: {user: {only: [:first_name, :last_name, :email]} }}}),}
         end
         render json: {
             notice: "Success",

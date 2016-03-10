@@ -21,14 +21,12 @@ class ShiftsController < ApplicationController
   # GET /shifts/1
   # GET /shifts/1.json
   def show
-    @location = Shift.find(params[:id]).location
     respond_to do |format|
       format.html {}
-      format.json {render json: {
-        location: {id: @location.id, name: @location.name},
-        assignments: expand_assignments(params[:id])
-      }, status: :ok
-    }
+      format.json {
+        @shift = Shift.find(params[:id]).as_json(include: {assignments: {include: {user: {only: [:first_name, :last_name, :email]} }}})
+        render json: {shift: @shift}, status: :ok
+      }
     end
   end
 
@@ -91,16 +89,6 @@ class ShiftsController < ApplicationController
     def shift_params
       params.require(:shift).permit(:location_id, :utf8, :authenticity_token)
     end
-
-    def expand_assignments(id)
-      @expanded_assignments = {}
-      @shift = Shift.find(id).assignments.each do |a|
-        @user = User.find(a.user_id)
-        @expanded_assignments[a.id] = {user: {first_name: @user.first_name, last_name: @user.last_name, email: @user.email}, start_time: a.created_at}
-      end
-      @expanded_assignments.as_json
-    end
-    helper_method :expand_assignments
 
     def check_last_out
       @shift.end_time = @shift.end_time || DateTime.now unless @shift.assignments.active
