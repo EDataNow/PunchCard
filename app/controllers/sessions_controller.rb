@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
       format.json {
         warden.authenticate!(scope: resource_name, recall: "#{controller_path}#new")
         @assignment = Assignment.new
-        @active_assignment = true if (Assignment.find_by(user_id: current_user.id) != nil)
+        @active_assignment = Assignment.where(user_id: current_user.id).active.first || "None"
         @locations = []
         current_user.locations.each do |loc|
           @locations.push({id: loc.id, name: loc.name, active_shift: loc.shifts.active.first.as_json(include: {assignments: {include: {user: {only: [:first_name, :last_name, :email]} }}}),})
@@ -15,8 +15,8 @@ class SessionsController < Devise::SessionsController
         render json: {
             notice: "Success",
             user: current_user,
-            locations: @locations,
             active_assignment: @active_assignment,
+            locations: @locations,
           },
           status: 200
       }
