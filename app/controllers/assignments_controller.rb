@@ -42,7 +42,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
-    @assignment.shift_id = assign_to_shift(assignment_params[:location_id])
+    @assignment.shift_id = assign_to_shift(shift_params[:location_id])
 
     respond_to do |format|
       if @assignment.save
@@ -88,8 +88,12 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:shift_id, :user_id, :location_id, :utf8, :authenticity_token)
+      params.require(:assignment).permit(:user_id)
     end
+    def shift_params
+      params.require(:shifts).permit(:location_id)
+    end
+
 
     def assign_to_shift(location_id)
       latest_shift = Shift.where(location_id: location_id).last
