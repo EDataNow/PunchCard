@@ -1,0 +1,22 @@
+  <tbody></tbody>
+  <thead>
+    <tr class="info">
+      <th><%= location.name %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  </div>
+  <% @assignments = location.shifts.last.assignments.includes([:user, :shift]) %>
+  <% @assignments.active.each do |assignment| %>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <%= "#{assignment.user.last_name.titleize}, #{assignment.user.first_name.titleize}" %>
+      </td>
+
+      <td>
+        <%= assignment.created_at.in_time_zone('Eastern Time (US & Canada)').to_formatted_s(:long_ordinal) %>
+      </td>
+    </tr>
+  <% end %>

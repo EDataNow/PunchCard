@@ -12,49 +12,35 @@
   </span>
 <% end %>
 <h3>Employees Currently Signed In</h3>
-<ul class="nav nav-pills">
-
-  <li class="active"><a data-toggle="pill" href="#all">ALL</a></li>
-
-  <% Location.all.each do |location| %>
-    <li><a data-toggle="pill" href="#<%= location.name.gsub(/\s+/, "") %>"><%= location.name%></a></li>
-  <% end %>
-
-</ul>
-
+  <% @locations = current_user.locations.includes(shifts: :assignments) %>
+  <div class='btn-group' role='group' aria-label='...'>
+  <script type="text/javascript">function set_filter_value(value){}</script>
+    <button type='button' class='btn btn-default' onClick="set_filter_value("ALL")">ALL</button>
+    <% @locations.each do |location| %>
+      <button type='button' class='btn btn-default' onClick="set_filter_value(<%location.name%>)"><%= location.name%></button>
+    <% end %>
+  </div>
 <div class="tab-content">
 
-  <div id="home" class="tab-pane fade in active">
-  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>User</th>
+        <th>Punch-In Time</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <% @locations.each do |location| %>
 
-  <% Location.all.each do |location| %>
-    <div id="<%= location.name.gsub(/\s+/, "")%>" class="tab-pane fade"><%= location.name%></div>
-  <% end %>
+      <div id="<%= location.name.gsub(/\s+/, "")%>" class="tab-pane fade">
+        <%= render 'table', location: location %>
+      </div>
+
+    <% end %>
+  </table>
+
 </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Location</th>
-      <th>Punch-In Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-  <% @assignments = Assignment.active%>
-  <% @assignments.each do |assignment| %>
-    <% punched_user = User.find_by(id: assignment.user_id) %>
-    <tr>
-      <td>
-        <%= "#{punched_user.last_name.titleize}, #{punched_user.first_name.titleize}" %>
-      </td>
-      <td>
-        <%= assignment.shift.location.name %>
-      </td>
-      <td>
-        <%= assignment.created_at.in_time_zone('Eastern Time (US & Canada)').to_formatted_s(:long_ordinal) %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+
+

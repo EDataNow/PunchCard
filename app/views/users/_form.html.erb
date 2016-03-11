@@ -1,0 +1,27 @@
+<%= form_for(@user) do |f| %>
+  <% @locations = current_user.locations.order(:name) %>
+  <div class="field">
+    <%= f.label :first_name %>
+    <br/>
+    <%= f.text_field :first_name %>
+    <br/>
+    <%= f.label :last_name %>
+    <br/>
+    <%= f.text_field :last_name %>
+    <br/>
+    <%= f.label :email %>
+    <br/>
+    <%= f.text_field :email %>
+    <br/>
+    <%= f.label :password %>
+    <br/>
+    <%= f.text_field :password %>
+    <div class="form-group">
+        <%= f.label "Select Locations" %><br>
+        <%= f.select :location_ids, @locations.collect {|l| [l.name, l.id]}, {}, multiple: true %> 
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
