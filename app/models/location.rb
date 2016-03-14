@@ -13,8 +13,10 @@
 
 class Location < ActiveRecord::Base
   has_many :shifts
+
   has_many :workplaces, dependent: :destroy
   has_many :users, through: :workplaces, foreign_key: :user_id
+
   validates :name, presence: true
   validates :users, presence: true
 

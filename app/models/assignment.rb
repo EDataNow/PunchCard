@@ -18,4 +18,7 @@ class Assignment < ActiveRecord::Base
   validates :shift_id, presence: true
   validates :user_id, presence: true
 
+  scope :active, -> {where(end_time: nil)}
+  scope :complete, -> {where.not(end_time: nil)}
+
 end
