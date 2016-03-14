@@ -6,10 +6,12 @@
         prohibited this assignment from being saved:
       %ul
         - @assignment.errors.full_messages.each do |message|
-          %li= message
+          %li
+            = message
   %span.actions
     = button_tag(type: 'submit', class: "btn btn-primary") do
       Punch In To
+    = "#{@shift.location.name}"
   %span.field
     = f.hidden_field :user_id, value: current_user.id
-    = collection_select(:shift, :location_id, current_user.locations.order(:name), :id, :name )
+    = hidden_field(:shift, :location_id, value: @shift.location_id)

@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
 
   has_many :workplaces
   has_many :locations, through: :workplaces, foreign_key: :location_id#, dependent: :destroy
-  validates :locations, presence: true
 
   def self.search(search)
   	if search

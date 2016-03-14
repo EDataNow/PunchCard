@@ -18,7 +18,8 @@ class Location < ActiveRecord::Base
   has_many :users, through: :workplaces, foreign_key: :user_id
 
   validates :name, presence: true
-  validates :users, presence: true
+
+  scope :active_shift, -> {shifts.where(end_time: nil).first}
 
   def self.search(search)
   	if search

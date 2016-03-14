@@ -46,7 +46,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to assignments_url, notice: 'Punched In Successfully.' }
+        format.html { redirect_to @assignment.shift, notice: 'Punched In Successfully.' }
         format.json { render json: @assignment.as_json, status: 201}
       else
         format.html { render :new }
@@ -91,7 +91,7 @@ class AssignmentsController < ApplicationController
       params.require(:assignment).permit(:user_id)
     end
     def shift_params
-      params.require(:shifts).permit(:location_id)
+      params.require(:shift).permit(:location_id)
     end
 
 

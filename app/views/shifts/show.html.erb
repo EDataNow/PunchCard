@@ -1,0 +1,34 @@
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<% if @shift.end_time == nil %>
+  <% @recent_assignment = @shift.assignments.active.where(user_id: current_user.id).first%>
+  <% if @recent_assignment && @recent_assignment.end_time == nil %>
+    <span>
+      <%= render 'punch_out' %>
+    </span>
+  <% else %>
+    <span>
+      <% @assignment = Assignment.new %>
+      <%= render 'punch_in' %>
+    </span>
+  <% end %>
+<% else %>
+  <%= render 'go_to_active' %>
+<% end %>
+<h3>Employees Currently Signed In</h3>
+<div class="tab-content">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>User</th>
+        <th>Punch-In Time</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+      <div class="tab-pane fade">
+        <%= render 'table', location: @shift.location %>
+      </div>
+  </table>
+</div>
