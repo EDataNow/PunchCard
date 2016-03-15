@@ -1,6 +1,7 @@
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<% @locations = current_user.locations.includes(shifts: :assignments) %>
 <% @recent_assignment = @assignments.active.where(user_id: current_user.id).first%>
 <% if @recent_assignment && @recent_assignment.end_time == nil %>
   <span>
@@ -12,7 +13,6 @@
   </span>
 <% end %>
 <h3>Employees Currently Signed In</h3>
-  <% @locations = current_user.locations.includes(shifts: :assignments) %>
   <div class='btn-group' role='group' aria-label='...'>
   <script type="text/javascript">function set_filter_value(value){}</script>
     <button type='button' class='btn btn-default' onClick="set_filter_value("ALL")">ALL</button>

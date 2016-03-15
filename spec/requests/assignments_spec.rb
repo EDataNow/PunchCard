@@ -15,8 +15,13 @@
 require 'rails_helper'
 
 RSpec.describe "Assignments", type: :request do
-  describe "GET /assignments" do
 
-
+  it "GETs the index of assignments" do
+=begin
+    get '/assignments'
+    FactoryGirl.create(:user)
+    expect(response).to contain("foo")=end
+=end
   end
+
 end

@@ -6,15 +6,20 @@ gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 gem 'react_on_rails'
+
+
 # Use rspec for tests
 gem 'rspec-rails', '~> 3.0'
-gem 'annotate'
-# React for rails
-gem 'react-rails', '~> 1.6.0'
-
+gem 'factory_girl_rails', "~> 4.0", require: false
+gem 'faker'
 # Use capybara with rspec for testing
 gem 'capybara', '~> 2.5'
 gem 'database_cleaner'
+
+
+gem 'annotate'
+# React for rails
+gem 'react-rails', '~> 1.6.0'
 
 # Haml rather than erb
 gem 'haml'

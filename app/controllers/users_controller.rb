@@ -27,7 +27,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:sign_in]
+  before_filter :authenticate_user!, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
   def sort_column

@@ -14,6 +14,14 @@
 
 require 'rails_helper'
 
-RSpec.describe Assignment, type: :model do
-  #pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe AssignmentsController, type: :controller do
+  login_user
+
+  it "GETs the index of assignments" do
+
+    get :index
+    expect(response.status).to eq(200)
+
+  end
+
 end
