@@ -28,14 +28,16 @@ class User < ActiveRecord::Base
   acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  validates_presence_of :first_name, :last_name
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  has_many :assignments
-  has_many :shifts, through: :assignments, foreign_key: :shift_id#, dependent: :destroy
+  has_many :assignments, dependent: :destroy
+  has_many :shifts, through: :assignments, foreign_key: :shift_id
 
-  has_many :workplaces
-  has_many :locations, through: :workplaces, foreign_key: :location_id#, dependent: :destroy
+  has_many :workplaces, dependent: :destroy
+  has_many :locations, through: :workplaces, foreign_key: :location_id
 
   def self.search(search)
   	if search

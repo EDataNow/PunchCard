@@ -48,7 +48,6 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-    Shift.create!(location_id: @location.id)
 
     respond_to do |format|
       if @location.save

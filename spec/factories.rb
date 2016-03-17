@@ -1,12 +1,17 @@
   FactoryGirl.define do
 
     factory :shift do
-      location_id 1
+      association :location
     end
 
     factory :assignment do
       association :user
       association :shift
+    end
+
+    factory :workplace do
+      association :user
+      association :location
     end
 
     factory :user do
@@ -20,9 +25,6 @@
     factory :location do
       name Faker::Address.city
       address Faker::Address.street_address
-      after(:create) do |loc|
-        loc.shifts << FactoryGirl.create(:shift, location_id: loc.id)
-      end
     end
 
 end

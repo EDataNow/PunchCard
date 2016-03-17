@@ -15,8 +15,8 @@
 class Assignment < ActiveRecord::Base
   belongs_to :user
   belongs_to :shift
-  validates :shift_id, presence: true
-  validates :user_id, presence: true
+  validates_presence_of :shift_id, :user_id
+
 
   scope :active, -> {where(end_time: nil)}
   scope :complete, -> {where.not(end_time: nil)}

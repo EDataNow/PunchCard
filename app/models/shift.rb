@@ -9,9 +9,10 @@
 #
 
 class Shift < ActiveRecord::Base
-  belongs_to :location, dependent: :destroy
-  has_many :assignments
-  has_many :users, through: :assignments, foreign_key: :user_id#, dependent: :destroy
+  belongs_to :location
+  validates_presence_of :location_id
+  has_many :assignments, dependent: :destroy
+  has_many :users, through: :assignments, foreign_key: :user_id
 
   scope :active, -> {where(end_time: nil)}
   scope :complete, -> {where.not(end_time: nil)}
