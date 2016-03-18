@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Shift do
+describe Shift, type: :model do
 
   it 'has a valid factory' do
     @shift = create(:shift)

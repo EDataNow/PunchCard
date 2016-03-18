@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Workplace do
+describe Workplace, type: :model do
 
   it 'has a valid factory' do
     @workplace = create(:workplace)

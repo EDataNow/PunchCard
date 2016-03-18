@@ -15,6 +15,7 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :set_end_time, only: [:destroy]
   respond_to :json
 
   # GET /assignments
@@ -72,8 +73,6 @@ class AssignmentsController < ApplicationController
   # DELETE /assignments/1
   # DELETE /assignments/1.json
   def destroy
-    @assignment.end_time = @assignment.end_time || DateTime.now
-    @assignment.save
     respond_to do |format|
       format.html { redirect_to assignments_url, notice: 'Punched Out Successfully.' }
       format.json { head :no_content }
@@ -94,6 +93,10 @@ class AssignmentsController < ApplicationController
       params.require(:shift).permit(:location_id)
     end
 
+    def set_end_time
+      @assignment.end_time = @assignment.end_time || DateTime.now
+      @assignment.save!
+    end
 
     def assign_to_shift(location_id)
       latest_shift = Shift.where(location_id: location_id).last

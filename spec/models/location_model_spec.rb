@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Location do
+describe Location, type: :model do
 
   it 'has a valid factory' do
       @location = create(:location)
@@ -8,7 +8,7 @@ describe Location do
   end
 
   context 'validation' do
-    it 'fails without a first and last name' do
+    it 'fails without a name' do
       expect(build(:location, name: nil)).not_to be_valid
     end
   end

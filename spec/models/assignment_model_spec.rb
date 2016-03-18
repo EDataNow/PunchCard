@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Assignment do
+describe Assignment, type: :model do
 
   it "has a valid factory" do
     @assignment = create(:assignment)

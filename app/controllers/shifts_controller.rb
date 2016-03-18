@@ -10,6 +10,7 @@
 
 class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
+  before_action :set_end_time, only: [:destroy]
   before_filter :authenticate_user!
   respond_to :json
 
@@ -72,7 +73,6 @@ class ShiftsController < ApplicationController
   # DELETE /shifts/1
   # DELETE /shifts/1.json
   def destroy
-    @shift.end_time = @shift.end_time || DateTime.now
     respond_to do |format|
       format.html { redirect_to shifts_url, notice: 'Shift was successfully destroyed.' }
       format.json { head :no_content }
@@ -92,6 +92,11 @@ class ShiftsController < ApplicationController
 
     def check_last_out
       @shift.end_time = @shift.end_time || DateTime.now unless @shift.assignments.active
+    end
+
+    def set_end_time
+      @shift.end_time = @shift.end_time || DateTime.now
+      @shift.save
     end
 
 end

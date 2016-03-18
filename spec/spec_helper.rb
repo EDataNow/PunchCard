@@ -19,6 +19,9 @@
 
 require 'factory_girl_rails'
 require 'controller_macros'
+require 'login_helpers'
+
+require 'selenium-webdriver'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -69,7 +72,6 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
 
-  config.include Devise::TestHelpers, type: :view
-  config.extend ControllerMacros, type: :view
+  config.extend LoginHelper, type: :view
 
 end
