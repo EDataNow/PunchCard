@@ -1,2 +1,2 @@
-= link_to "<button type='button' class='btn btn-danger'>Punch Out</button>".html_safe,                    |
+= link_to "<button type='button' class='btn btn-danger' id='punch_out'>Punch Out</button>".html_safe,                    |
   @shift.assignments.active.where(user_id: current_user.id).first, method: :delete, data: { confirm: 'Are you sure?' } |

@@ -66,12 +66,23 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   # Kernel.srand config.seed
 
-  #Add FactoryGirl methods to rspec
   config.include FactoryGirl::Syntax::Methods
 
   config.include Devise::TestHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
 
   config.extend LoginHelper, type: :view
+  config.around :each, type: :view do |test|
+    driver.manage.timeouts.implicit_wait = 0
+    @accept_next_alert = true
+
+    login_with(
+      test.metadata[:use_driver] || driver,
+      test.metadata[:login_as] || :user
+      ) unless test.metadata[:skip_login]
+    test.run
+    log_out unless test.metadata[:skip_logout]
+    driver.quit
+  end
 
 end

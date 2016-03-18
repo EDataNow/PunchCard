@@ -9,7 +9,7 @@
           %li
             = message
   %span.actions
-    = button_tag(type: 'submit', class: "btn btn-primary") do
+    = button_tag(type: 'submit', class: "btn btn-primary", id: 'punch_in') do
       Punch In To
     = "#{@shift.location.name}"
   %span.field

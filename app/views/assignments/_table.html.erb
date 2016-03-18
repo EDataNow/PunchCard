@@ -8,7 +8,7 @@
   </div>
   <% @assignments = location.shifts.last.assignments.includes([:user, :shift]) %>
   <% @assignments.active.each do |assignment| %>
-    <tr>
+    <tr id="user_id_<%=assignment.user.id%>">
       <td>
       </td>
       <td>

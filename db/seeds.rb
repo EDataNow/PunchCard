@@ -8,7 +8,7 @@
 
 User.create!(first_name: "Baby", last_name: "Rempel", email: "User1@punchcard.net", password: "password1", admin: true)
 User.create!(first_name: "Mike", last_name: "Tyson", email: "m.tyson@punchcard.net", password: "boxeradmin", admin: true)
-User.create!(first_name: "Brody", last_name: "Bradtke", email: "User3@punchcard.net", password: "password3", admin: false)
+User.create!(first_name: "Lauren", last_name: "Ipsum", email: "User3@punchcard.net", password: "password3", admin: false)
 
 Location.create!(name: "Oshawa", address: "123")
 Location.create!(name: "Toronto", address: "456")

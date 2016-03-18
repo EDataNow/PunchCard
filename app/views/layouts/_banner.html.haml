@@ -4,12 +4,12 @@
 .container
   .jumbotron{:style => "background-color:rgb(9,80,208); padding:25px !important; width: 100%;"}
     %span
-      = image_tag("Logo.png", size: "75x75", alt: "Logo")
+      = image_tag("Logo.png", size: "75x75", alt: "Logo", id:"logo")
       %font#Title{:color => "white", :size => "22", :style => "vertical-align: middle"} PunchCard
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right{:style => "vertical-align: middle"}
         - if user_signed_in?
-          %font{:color => "white", :size => "4"}
+          %font{:color => "white", :size => "4", :id => 'greeting'}
             Welcome,
             %b
               = current_user.first_name.titleize
