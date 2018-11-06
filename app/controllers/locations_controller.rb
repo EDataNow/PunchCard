@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
   helper_method :sort_column, :sort_direction
+  respond_to :json
 
   def sort_column
     User.column_names.include?(params[:sort]) ? params[:sort] : "name"
